@@ -2,6 +2,7 @@ package lambda.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Class Person.
@@ -113,5 +114,18 @@ public class Person {
                         .build()
         );
         return people;
+    }
+
+    //old style
+    public void printPersonDetails() {
+        System.out.println(
+                "Name: " +this.getName()
+                        + " Age:" + this.getAge()
+                + " Gender:" + this.getGender());
+    }
+
+    //use function interface (T->R)
+    public String printCustom(Function<Person,String> fun) {
+        return fun.apply(this);
     }
 }
