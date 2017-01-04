@@ -79,6 +79,9 @@ public class BasicTerminalMethods {
 
     }
 
+    /**
+     * Inner class for mapToObj operation purposes.
+     */
     static class Key{
         private int id;
 
