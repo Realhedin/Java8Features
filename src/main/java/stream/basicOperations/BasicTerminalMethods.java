@@ -3,6 +3,7 @@ package stream.basicOperations;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Basic terminal operations.
@@ -59,5 +60,39 @@ public class BasicTerminalMethods {
 
         //reduce - allows to do aggregation functions and return one result
         System.out.println(integerList.stream().reduce((s1, s2) -> s1 + s2).orElse(-10));
+
+
+        //
+        //Additional methods of number streams
+        //
+        List<String> strWithIntList = Arrays.asList("1", "3", "4");
+        //sum - sum of all elements
+        System.out.println(strWithIntList.stream().mapToInt(Integer::parseInt).sum());
+        System.out.println(integerList.stream().mapToInt(p->p).sum());
+        //average - average of all elements
+        System.out.println(strWithIntList.stream().mapToInt(Integer::parseInt).average());
+        System.out.println(integerList.stream().mapToInt(p->p).average());
+        //mapToObj - transfer number stream into object one
+        IntStream intStream = integerList.stream().mapToInt(p -> p);
+        intStream.mapToObj(Key::new).forEach(System.out::println);
+
+
+    }
+
+    static class Key{
+        private int id;
+
+        public Key(int id) {
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Key{" +
+                    "id=" + id +
+                    '}';
+        }
     }
 }
+
+
